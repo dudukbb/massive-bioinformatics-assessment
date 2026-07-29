@@ -23,19 +23,19 @@ The isolate was identified as **Klebsiella pneumoniae ST258** carrying multiple 
 massive-bioinformatics-assessment/
 ├── README.md
 ├── findings.md
+├── notes.md
 ├── code/
 │   └── analysis_commands.sh
 ├── data/
 │   └── unknown_isolate.fastq.gz
+├── references/
+│   └── references.md
 └── results/
     ├── qc/
-    ├── taxonomy/
     ├── assembly/
-    ├── typing/
     ├── amr/
     ├── plasmid/
-    ├── virulence/
-    └── logs/
+    └── virulence/
 ```
 
 The raw sequencing data is not included in the repository because of its size.
@@ -57,13 +57,13 @@ Required software:
 - PlasmidFinder
 - Kleborate
 
-NCBI BLAST was used through its web interface for species confirmation.
+Species confirmation was additionally performed using the NCBI BLAST web interface.
 
 ---
 
 ## Input Data
 
-Place the raw sequencing file in the following directory:
+Place the raw sequencing file in:
 
 ```text
 data/unknown_isolate.fastq.gz
@@ -102,32 +102,24 @@ The workflow performs the following analyses:
 1. Raw-read quality assessment
 2. Genome assembly
 3. Assembly statistics
-4. Preparation of the query sequence for manual NCBI BLAST analysis
+4. Preparation of the longest contig for manual NCBI BLAST confirmation
 5. MLST sequence typing
 6. AMRFinderPlus analysis
 7. PlasmidFinder analysis
-8. Separate analysis of contig_17
-9. Kleborate analysis
-10. Recording software and database versions
+8. Kleborate analysis
 
 ---
 
 ## Manual BLAST Step
 
-Species confirmation was performed using the NCBI BLAST web interface.
+The longest assembled contig was used for manual species confirmation using the NCBI BLAST web interface.
 
-The workflow prepares the following FASTA file:
+Recommended settings:
 
-```text
-results/taxonomy/blast_query_longest_contig.fasta
-```
+- Database: **Nucleotide collection (nt)**
+- Program: **Megablast**
 
-Upload this file to the NCBI BLAST website using:
-
-- Database: Nucleotide collection (nt)
-- Program: Megablast
-
-The BLAST result should be interpreted together with the MLST and Kleborate results.
+The BLAST result should be interpreted together with the MLST and Kleborate analyses.
 
 ---
 
@@ -148,13 +140,7 @@ results/assembly/assembly.fasta
 ### Assembly statistics
 
 ```text
-results/assembly/assembly_stats.tsv
-```
-
-### MLST
-
-```text
-results/typing/mlst.tsv
+results/assembly/assembly_info.txt
 ```
 
 ### Antimicrobial resistance
@@ -163,13 +149,7 @@ results/typing/mlst.tsv
 results/amr/amrfinder.tsv
 ```
 
-### contig_17 antimicrobial resistance
-
-```text
-results/amr/contig_17_amr.tsv
-```
-
-### PlasmidFinder
+### Plasmid analysis
 
 ```text
 results/plasmid/
@@ -178,13 +158,7 @@ results/plasmid/
 ### Virulence analysis
 
 ```text
-results/virulence/kleborate.tsv
-```
-
-### Tool versions
-
-```text
-results/logs/tool_versions.txt
+results/virulence/klebsiella_pneumo_complex_output.txt
 ```
 
 ---
