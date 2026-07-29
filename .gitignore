@@ -1,15 +1,33 @@
 # Raw sequencing data
-data/unknown_isolate.fastq
-data/unknown_isolate.fastq.gz
+data/*
+!data/.gitkeep
 
-# Python
+# Local databases
+databases/*
+!databases/.gitkeep
+
+# Large and temporary analysis outputs
+results/assembly/00-assembly/
+results/assembly/10-consensus/
+results/assembly/20-repeat/
+results/assembly/30-contigger/
+results/assembly/40-polishing/
+results/assembly/tmp/
+results/plasmid/tmp/
+
+# Local installers and logs
+Miniforge3.sh
+session.log
+terminal_history_full.txt
+terminal_history_with_time.txt
+
+# Python / Conda
 __pycache__/
 *.py[cod]
-
-# Conda
+.venv/
+.env
 .conda/
 .mamba/
-.env
 
 # VS Code
 .vscode/
@@ -18,3 +36,10 @@ __pycache__/
 Thumbs.db
 .DS_Store
 
+# Reproducible Flye files
+results/assembly/assembly_graph.gfa
+results/assembly/assembly_graph.gv
+results/assembly/flye.log
+results/assembly/largest_contig.fasta.seqkit.fai
+results/assembly/params.json
+results/plasmid/contig_17_scan/tmp/
