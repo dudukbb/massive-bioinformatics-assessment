@@ -393,5 +393,3 @@ Manual step:
 
 SUMMARY
 
-exit
-
