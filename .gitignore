@@ -1,0 +1,20 @@
+# Raw sequencing data
+data/unknown_isolate.fastq
+data/unknown_isolate.fastq.gz
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Conda
+.conda/
+.mamba/
+.env
+
+# VS Code
+.vscode/
+
+# Windows / macOS
+Thumbs.db
+.DS_Store
+
